@@ -1,0 +1,34 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="color-mode-toggle"
+  type="button"
+  class="hover:bg-lightAccent200/90 p-3 rounded-full
+    border-2 border-transparent hover:border-2
+    hover:border-lightPrimary100 transition-all hover:text-white"
+>
+  <Icon name="tabler:sun" class:list={["w-5", "h-5", "dark:text-white"]} />
+</button>
+
+<script>
+  import { $ } from "@lib/utils/dom-selectors";
+  import { getTheme, setTheme } from "@lib/utils/ls-theme";
+
+  const colorModeToggle = $<HTMLButtonElement>("#color-mode-toggle");
+  const html = $<HTMLHtmlElement>("html");
+
+  colorModeToggle.addEventListener("click", () => {
+    setTheme(html.classList.contains("dark") ? "light" : "dark");
+    html.classList.toggle("dark");
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const theme = getTheme();
+
+    if (!theme) return;
+
+    html.classList.add(theme);
+  });
+</script>

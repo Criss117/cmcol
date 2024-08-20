@@ -1,0 +1,26 @@
+---
+import { Icon } from "astro-icon/components";
+import H3 from "../typography/H3.astro";
+import P from "../typography/P.astro";
+
+interface Props {
+  name: string;
+  description: string;
+  genre: "male" | "female";
+}
+
+const { name, description, genre } = Astro.props;
+---
+
+<div class="flex flex-row">
+  <div class="w-1/4 items-center">
+    <Icon
+      name={`flat-color-icons:business${genre === "male" ? "man" : "woman"}`}
+      class="w-20 h-20 mx-auto"
+    />
+  </div>
+  <div class="w-3/4">
+    <H3>{name}</H3>
+    <P>{description}</P>
+  </div>
+</div>

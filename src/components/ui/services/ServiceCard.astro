@@ -1,0 +1,53 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import P from "../typography/P.astro";
+import H3 from "../typography/H3.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  inverted?: boolean;
+}
+
+const { id, title, description, inverted } = Astro.props;
+
+const imageUrl =
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
+---
+
+<div
+  class:list={[
+    "flex flex-col md:gap-x-20 items-center md:items-start",
+    inverted ? "md:flex-row" : "md:flex-row-reverse",
+  ]}
+>
+  <div class="mt-14 md:mt-0 md:w-1/2">
+    <div class="space-y-2">
+      <H3>{title}</H3>
+      <P>{description}</P>
+    </div>
+
+    <div class="mt-5">
+      <P class="flex gap-x-5 justify-center items-center">
+        <span
+          class="bg-green-400 rounded-full flex items-center justify-center p-2"
+        >
+          <Icon name="tabler:check" class="w-7 h-7" />
+        </span>
+        {description}
+      </P>
+    </div>
+  </div>
+  <div class="md:w-1/2">
+    <Image
+      src={imageUrl}
+      alt={title}
+      width={700}
+      height={700}
+      class="object-cover aspect-square rounded-xl"
+      transition:name={`${id}-image`}
+    />
+  </div>
+</div>

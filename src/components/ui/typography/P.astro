@@ -1,0 +1,27 @@
+---
+const variants = {
+  xsmall: "text-xs",
+  small: "text-sm",
+  default: "text-normal",
+  large: "text-xl",
+  xlarge: "text-2xl",
+  xxlarge: "text-3xl",
+} as const;
+
+interface Props {
+  variant?: keyof typeof variants;
+  class?: string;
+}
+
+const { variant = "default", class: className } = Astro.props;
+---
+
+<p
+  class:list={[
+    "text-black dark:text-white text-wrap",
+    variants[variant],
+    className,
+  ]}
+>
+  <slot />
+</p>

@@ -1,0 +1,50 @@
+---
+import type { SocialPill } from "@/lib/models/type";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  socialPill: SocialPill;
+}
+
+const { socialPill } = Astro.props;
+
+const { id, title, link, icon, toClipboard } = socialPill;
+---
+
+<div class="relative">
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex bg-lightAccent200 gap-x-2
+    items-center px-3 p-2 rounded-full
+    hover:bg-lightAccent200/90
+    hover:dark:bg-lightPrimary100/60 transition-all
+    shadow-sm shadow-primary/40 pr-14"
+  >
+    <Icon class="text-white mx-auto size-7" name={icon} />
+    <p class="text-white font-semibold text-center">{title}</p>
+  </a>
+  <div class="absolute right-2 top-1/2 -translate-y-1/2 group">
+    <div
+      class="absolute text-white bg-lightPrimary100/80
+        -top-4 -right-14 text-sm w-40 text-center rounded-lg
+        hidden group-hover:block"
+    >
+      Copiar al portapapeles
+    </div>
+    <button class="hover:bg-slate-500 p-2 rounded-full transition-all" id={id}>
+      <Icon name="tabler:copy" class="mx-auto size-7 text-white" />
+    </button>
+  </div>
+
+  <script is:inline define:vars={{ id, toClipboard }}>
+    const btn = document.querySelector(`#${id}`);
+
+    if (!btn) return;
+
+    btn.addEventListener("click", () => {
+      navigator.clipboard.writeText(toClipboard);
+    });
+  </script>
+</div>

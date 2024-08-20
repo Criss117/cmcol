@@ -1,0 +1,14 @@
+---
+interface Props {
+  class?: string;
+}
+---
+
+<h1
+  class:list={[
+    "text-5xl md:text-7xl font-bold uppercase text-lightPrimary100 dark:text-darkPrimary100 text-center transition-all",
+    Astro.props.class,
+  ]}
+>
+  <slot />
+</h1>

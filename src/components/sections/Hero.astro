@@ -1,0 +1,35 @@
+---
+import H1 from "../ui/typography/H1.astro";
+import SectionContainer from "../ui/SectionContainer.astro";
+import SocialPill from "../ui/SocialPill.astro";
+import { SOCIALPILLS } from "@lib/consts/socialpills";
+import P from "../ui/typography/P.astro";
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<SectionContainer id={id} class="min-h-screen flex items-center">
+  <div class="space-y-16">
+    <header>
+      <H1>
+        Consultoría
+        <span class="text-4xl md:text-5xl font-normal block lowercase">
+          y asesoría tributaria
+        </span>
+      </H1>
+      <P class="text-center mt-10" variant="xlarge">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet dolorem
+        harum quisquam. Eaque est accusantium autem porro quod sed debitis?
+      </P>
+    </header>
+    <footer
+      class="flex gap-5 flex-col md:flex-row flex-grow flex-nowrap items-center md:items-end justify-center"
+    >
+      {SOCIALPILLS.map((socialPill) => <SocialPill socialPill={socialPill} />)}
+    </footer>
+  </div>
+</SectionContainer>
