@@ -2,6 +2,8 @@
 const variants = {
   outline: "text-primary hover:underline dark:text-white",
   rounded: "bg-slate-200 p-2 rounded-full dark:bg-lightPrimary100",
+  button:
+    "bg-slate-200 p-2 rounded-md dark:bg-lightPrimary200 hover:bg-slate-300 dark:hover:bg-lightPrimary100 dark:text-white transition-all",
 } as const;
 
 interface Props {
@@ -24,7 +26,7 @@ const {
 <a
   id={id}
   href={href}
-  class:list={[className, variants[variant]]}
+  class:list={[variants[variant], className]}
   target={target}
 >
   <slot />

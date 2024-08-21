@@ -1,0 +1,113 @@
+---
+import { Image } from "astro:assets";
+import Button from "../Button.astro";
+import lightCmcol from "@/assets/images/light-cmcol.png";
+import darkCmcol from "@/assets/images/dark-cmcol.png";
+import { Icon } from "astro-icon/components";
+import { NAV } from "@/lib/consts/nav";
+import ApplyColorMode from "../ApplyColorMode.astro";
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<nav class="md:hidden flex justify-between items-center w-[95%] mx-auto py-2">
+  <div>
+    <a href={pathname === "/" ? "/#top" : "/"} class="bg-red-500">
+      <Image
+        src={lightCmcol}
+        alt="CmCol Logo"
+        width={40}
+        height={40}
+        class="dark:block hidden"
+      />
+      <Image
+        src={darkCmcol}
+        alt="CmCol Logo"
+        width={40}
+        height={40}
+        class="dark:hidden"
+      />
+    </a>
+  </div>
+  <Button variant="secondary" id="mobile-nav-btn">
+    <Icon name="tabler:menu-3" class="w-6 h-6" />
+  </Button>
+</nav>
+
+<div
+  id="mobile-nav"
+  class="hidden md:hidden absolute top-0 right-0 h-screen bg-slate-800/90 w-full backdrop-blur-md z-100"
+>
+  <header class="w-full flex justify-end mt-2">
+    <Button variant="ghost" id="close-mobile-nav" className="mx-2">
+      <Icon name="tabler:x" class="w-10 h-10 text-red-800" />
+    </Button>
+  </header>
+  <ul class="flex flex-col gap-y-32 items-center justify-between mt-20">
+    {
+      NAV.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="
+            text-2xl relative text-white
+            after:content-[''] after:border-b-2
+            after:w-0 after:h-2 after:border-white
+            after:absolute after:bottom-0 after:left-0
+            after:hover:w-full after:transition-all
+            "
+          >
+            {item.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <footer class="w-full flex justify-center mt-20">
+    <button
+      id="btn-color-mode-toggle"
+      type="button"
+      class="hover:bg-lightAccent200/90 p-3 rounded-full
+      border-2 border-transparent hover:border-2
+      hover:border-lightPrimary100 transition-all hover:text-white"
+    >
+      <Icon name="tabler:sun" class:list={["w-10 h-10 text-white"]} />
+    </button>
+  </footer>
+</div>
+
+<script>
+  import { $ } from "@lib/utils/dom-selectors";
+
+  const mobileNavBtn = $<HTMLButtonElement>("#mobile-nav-btn");
+  const closeMobileNavBtn = $<HTMLButtonElement>("#close-mobile-nav");
+  const mobileNav = $("#mobile-nav");
+  const allLinks = document.querySelectorAll("a");
+
+  mobileNavBtn.addEventListener("click", () => {
+    mobileNav.classList.remove("hidden");
+  });
+
+  closeMobileNavBtn.addEventListener("click", () => {
+    mobileNav.classList.add("hidden");
+  });
+
+  allLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.add("hidden");
+    });
+  });
+</script>
+
+<script is:inline>
+  const colorModeToggle = document.getElementById("btn-color-mode-toggle");
+  const html = document.querySelector("html");
+
+  colorModeToggle.addEventListener("click", () => {
+    localStorage.setItem(
+      "theme",
+      html.classList.contains("dark") ? "light" : "dark"
+    );
+    html.classList.toggle("dark");
+  });
+</script>

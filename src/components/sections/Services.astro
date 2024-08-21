@@ -4,6 +4,8 @@ import SectionContainer from "../ui/SectionContainer.astro";
 import ServiceCard from "../ui/services/ServiceCard.astro";
 import Link from "../ui/Link.astro";
 import H2 from "../ui/typography/H2.astro";
+import { Icon } from "astro-icon/components";
+import { SOCIALS } from "@/lib/consts/socials";
 
 const servicesCollection = await getCollection("services");
 
@@ -17,11 +19,17 @@ const { id } = Astro.props;
 ---
 
 <SectionContainer id={id} class="pt-28">
-  <H2
-    class="text-2xl md:text-4xl font-bold uppercase text-primary text-center dark:text-darkText100"
-  >
-    Nuestros Servicios
-  </H2>
+  <header class="flex flex-col">
+    <H2
+      class="text-2xl md:text-4xl font-bold uppercase text-primary text-center dark:text-darkText100"
+    >
+      Nuestros Servicios
+    </H2>
+    <Link href="/services" class="flex items-center w-fit" variant="button">
+      Ver mas
+      <Icon name="tabler:arrow-right" class="w-5 h-5" />
+    </Link>
+  </header>
 
   <section class="flex flex-col md:gap-y-36 mt-10">
     {
@@ -36,7 +44,10 @@ const { id } = Astro.props;
     }
   </section>
 
-  <footer class="w-full mt-10 text-end">
-    <Link href="/services">Ver mas...</Link>
+  <footer class="w-full mt-10 flex justify-end">
+    <Link href="/services" class="flex items-center w-fit" variant="button">
+      Ver mas
+      <Icon name="tabler:arrow-right" class="w-5 h-5" />
+    </Link>
   </footer>
 </SectionContainer>

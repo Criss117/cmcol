@@ -14,15 +14,22 @@ import { Icon } from "astro-icon/components";
 
 <script>
   import { $ } from "@lib/utils/dom-selectors";
-  import { getTheme, setTheme } from "@lib/utils/ls-theme";
+  import { setTheme } from "@lib/utils/ls-theme";
 
-  const colorModeToggle = $<HTMLButtonElement>("#color-mode-toggle");
-  const html = $<HTMLHtmlElement>("html");
+  const colorModeToggle = $("#color-mode-toggle");
+  const html = $("html");
 
   colorModeToggle.addEventListener("click", () => {
     setTheme(html.classList.contains("dark") ? "light" : "dark");
     html.classList.toggle("dark");
   });
+</script>
+
+<script>
+  import { $ } from "@lib/utils/dom-selectors";
+  import { getTheme } from "@lib/utils/ls-theme";
+
+  const html = $("html");
 
   document.addEventListener("DOMContentLoaded", () => {
     const theme = getTheme();

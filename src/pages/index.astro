@@ -5,6 +5,7 @@ import Services from "@/components/sections/Services.astro";
 import Link from "@/components/ui/Link.astro";
 import Testimonials from "@/components/sections/Testimonials.astro";
 import { Icon } from "astro-icon/components";
+import Contact from "@/components/sections/Contact.astro";
 ---
 
 <MainLayout title="Home">
@@ -13,8 +14,10 @@ import { Icon } from "astro-icon/components";
     <Services id="services" />
   </div>
 
-  <div>
-    <Testimonials id="testimonials" />
+  <Testimonials id="testimonials" />
+
+  <div class="bg-indigo-50/80 dark:bg-slate-800">
+    <Contact id="contact" />
   </div>
 
   <Link

@@ -1,0 +1,56 @@
+---
+import Input from "../form/input.astro";
+import Submit from "../form/submit.astro";
+import TextArea from "../form/text-area.astro";
+import SectionContainer from "../ui/SectionContainer.astro";
+import H2 from "../ui/typography/H2.astro";
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<SectionContainer id={id} class="py-28">
+  <H2 class="text-center">Contacto</H2>
+  <form id="contact-form" class="relative w-[90%] md:w-[60%] mx-auto">
+    <p
+      class="bg-red-400 text-white p-2
+        border-l-8 border-red-800 absolute
+        w-full hidden font-semibold"
+      id="errors"
+    >
+      Error
+    </p>
+    <fieldset class="mt-16">
+      <Input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Nombre Completo"
+        maxlength={50}
+      />
+    </fieldset>
+    <fieldset class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
+      <Input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        maxlength={50}
+      />
+      <Input
+        type="number"
+        name="number"
+        id="phone"
+        placeholder="Telefono"
+        maxlength={10}
+      />
+    </fieldset>
+    <fieldset class="mt-5">
+      <TextArea name="comment" id="comment" placeholder="Mensaje" />
+    </fieldset>
+    <Submit label="Enviar" />
+  </form>
+</SectionContainer>

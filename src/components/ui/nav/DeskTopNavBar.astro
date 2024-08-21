@@ -1,16 +1,35 @@
 ---
 import { Image } from "astro:assets";
-import ApplyColorMode from "../ApplyColorMode.astro";
 import { NAV } from "@lib/consts/nav";
+import ApplyColorMode from "../ApplyColorMode.astro";
+import lightCmcol from "@/assets/images/light-cmcol.png";
+import darkCmcol from "@/assets/images/dark-cmcol.png";
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
-<nav class="hidden md:flex w-[60%] mx-auto h-full items-center justify-between">
+<nav
+  class="hidden md:flex w-[90%] md:w-[80%] lg:w-[70%] mx-auto h-full items-center justify-between"
+>
   <div>
-    <a href="#top">
-      <Image src="/cmcol.webp" alt="CmCol Logo" width={32} height={32} />
+    <a href={pathname === "/" ? "/#top" : "/"} class="bg-red-500">
+      <Image
+        src={lightCmcol}
+        alt="CmCol Logo"
+        width={40}
+        height={40}
+        class="dark:block hidden"
+      />
+      <Image
+        src={darkCmcol}
+        alt="CmCol Logo"
+        width={40}
+        height={40}
+        class="dark:hidden"
+      />
     </a>
   </div>
-  <ul class="flex gap-x-10">
+  <ul class="flex gap-x-5 md:gap-x-10">
     {
       NAV.map((item) => (
         <li>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  type: astroHTML.JSX.HTMLInputTypeAttribute;
+  name: string;
+  id: string;
+  placeholder: string;
+  maxlength?: number
+  minlength?: number
+}
+
+const {id,name,placeholder,type, maxlength = 50, minlength = 5} = Astro.props
+---
+
+<input 
+  type={type} 
+  name={name} 
+  id={id} 
+  maxlength={maxlength}
+  placeholder={placeholder} 
+  minlength={minlength}
+  class="
+    bg-gray-50 border border-gray-300 text-black
+    rounded-lg block w-full p-2 shadow-md">

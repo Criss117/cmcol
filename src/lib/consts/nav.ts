@@ -8,10 +8,6 @@ export const NAV = [
     href: "#testimonials",
   },
   {
-    title: "Equipo",
-    href: "#team",
-  },
-  {
     title: "Contacto",
     href: "#contact",
   },
