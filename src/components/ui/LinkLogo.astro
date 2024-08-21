@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<a href={pathname === "/" ? "/#top" : "/"}>
+  <Image
+    src={"/light-cmcol.png"}
+    alt="CmCol Logo"
+    width={40}
+    height={40}
+    class="dark:block hidden"
+  />
+  <Image
+    src={"/dark-cmcol.png"}
+    alt="CmCol Logo"
+    width={40}
+    height={40}
+    class="dark:hidden"
+  />
+</a>

@@ -1,54 +1,13 @@
 ---
-import { Image } from "astro:assets";
-import { NAV } from "@lib/consts/nav";
 import ApplyColorMode from "../ApplyColorMode.astro";
-
-const pathname = new URL(Astro.request.url).pathname;
+import LinkLogo from "../LinkLogo.astro";
+import NavBar from "./NavBar.astro";
 ---
 
 <nav
   class="hidden md:flex w-[90%] md:w-[80%] lg:w-[70%] mx-auto h-full items-center justify-between"
 >
-  <div>
-    <a href={pathname === "/" ? "/#top" : "/"} class="bg-red-500">
-      <Image
-        src={"/light-cmcol.png"}
-        alt="CmCol Logo"
-        width={40}
-        height={40}
-        class="dark:block hidden"
-      />
-      <Image
-        src={"/dark-cmcol.png"}
-        alt="CmCol Logo"
-        width={40}
-        height={40}
-        class="dark:hidden"
-      />
-    </a>
-  </div>
-  <ul class="flex gap-x-5 md:gap-x-10">
-    {
-      NAV.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class="
-            text-xl relative dark:text-white
-            after:content-[''] after:border-b-2
-            after:w-0 after:h-2 after:border-black
-            after:absolute after:bottom-0 after:left-0
-            after:hover:w-full after:transition-all
-            after:dark:border-white
-            "
-          >
-            {item.title}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-  <div>
-    <ApplyColorMode />
-  </div>
+  <LinkLogo />
+  <NavBar variant="desktop" />
+  <ApplyColorMode />
 </nav>

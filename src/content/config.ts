@@ -6,6 +6,13 @@ const servicesCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.date(),
+    imageUrl: z.string(),
+    features: z.array(
+      z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+    ),
   }),
 });
 

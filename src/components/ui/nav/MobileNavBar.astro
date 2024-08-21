@@ -1,31 +1,12 @@
 ---
-import { Image } from "astro:assets";
 import Button from "../Button.astro";
 import { Icon } from "astro-icon/components";
-import { NAV } from "@/lib/consts/nav";
-
-const pathname = new URL(Astro.request.url).pathname;
+import LinkLogo from "../LinkLogo.astro";
+import NavBar from "./NavBar.astro";
 ---
 
 <nav class="md:hidden flex justify-between items-center w-[95%] mx-auto py-2">
-  <div>
-    <a href={pathname === "/" ? "/#top" : "/"} class="bg-red-500">
-      <Image
-        src={"/light-cmcol.png"}
-        alt="CmCol Logo"
-        width={40}
-        height={40}
-        class="dark:block hidden"
-      />
-      <Image
-        src={"/dark-cmcol.png"}
-        alt="CmCol Logo"
-        width={40}
-        height={40}
-        class="dark:hidden"
-      />
-    </a>
-  </div>
+  <LinkLogo />
   <Button variant="secondary" id="mobile-nav-btn">
     <Icon name="tabler:menu-3" class="w-6 h-6" />
   </Button>
@@ -40,26 +21,7 @@ const pathname = new URL(Astro.request.url).pathname;
       <Icon name="tabler:x" class="w-10 h-10 text-red-800" />
     </Button>
   </header>
-  <ul class="flex flex-col gap-y-32 items-center justify-between mt-20">
-    {
-      NAV.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class="
-            text-2xl relative text-white
-            after:content-[''] after:border-b-2
-            after:w-0 after:h-2 after:border-white
-            after:absolute after:bottom-0 after:left-0
-            after:hover:w-full after:transition-all
-            "
-          >
-            {item.title}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <NavBar variant="mobile" />
   <footer class="w-full flex justify-center mt-20">
     <button
       id="btn-color-mode-toggle"

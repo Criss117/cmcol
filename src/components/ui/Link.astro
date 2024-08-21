@@ -12,6 +12,7 @@ interface Props {
   class?: string;
   target?: "_blank" | "_self" | "_parent" | "_top";
   variant?: keyof typeof variants;
+  ariaLabel?: string;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   class: className,
   variant = "outline",
   target = "_self",
+  ariaLabel,
 } = Astro.props;
 ---
 
@@ -28,6 +30,7 @@ const {
   href={href}
   class:list={[variants[variant], className]}
   target={target}
+  aria-label={ariaLabel || href}
 >
   <slot />
 </a>

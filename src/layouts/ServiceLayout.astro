@@ -1,0 +1,16 @@
+---
+import "../styles/blog.css";
+import MainLayout from "./MainLayout.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImageUrl?: string;
+}
+
+const { title, description, ogImageUrl } = Astro.props;
+---
+
+<MainLayout title={title} description={description} ogImageUrl={ogImageUrl}>
+  <slot />
+</MainLayout>

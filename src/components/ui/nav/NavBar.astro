@@ -1,0 +1,71 @@
+---
+const variants = {
+  mobile: {
+    a: "text-2xl text-white after:border-white",
+    li: "flex-col gap-y-32 items-center justify-between mt-20",
+  },
+  desktop: {
+    a: "text-xl dark:text-white after:border-black after:dark:border-white",
+    li: "gap-x-5 md:gap-x-10",
+  },
+} as const;
+
+interface Props {
+  variant?: keyof typeof variants;
+}
+
+const { variant = "desktop" } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+
+const NAV = [
+  {
+    title: "Servicios",
+    href:
+      pathname === "/"
+        ? "#services"
+        : pathname.includes("/services")
+          ? "/services"
+          : "/",
+    selected: pathname === "/services",
+  },
+  {
+    title: "Testimoniales",
+    href: pathname === "/" ? "#testimonials" : "/#testimonials",
+  },
+  {
+    title: "Contacto",
+    href: pathname === "/" ? "#contact" : "/#contact",
+  },
+];
+---
+
+<ul
+  class="flex gap-x-5 md:gap-x-10"
+  class:list={["flex", variants[variant].li]}
+>
+  {
+    NAV.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          class:list={[
+            `relative
+            after:content-[''] 
+            after:border-b-2 
+            after:w-0 
+            after:h-2 
+            after:absolute 
+            after:bottom-0 
+            after:left-0 
+            after:hover:w-full 
+            after:transition-all`,
+            variants[variant].a,
+            item.selected && "after:w-full after:border-b-2",
+          ]}
+        >
+          {item.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>

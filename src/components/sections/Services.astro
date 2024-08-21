@@ -18,34 +18,51 @@ const { id } = Astro.props;
 ---
 
 <SectionContainer id={id} class="pt-28">
-  <header class="flex flex-col">
+  <header class="flex flex-col gap-y-5">
     <H2
       class="text-2xl md:text-4xl font-bold uppercase text-primary text-center dark:text-darkText100"
     >
       Nuestros Servicios
     </H2>
-    <Link href="/services" class="flex items-center w-fit" variant="button">
-      Ver mas
+    <Link
+      href="/services"
+      class="flex items-center w-fit ml-auto"
+      variant="outline"
+    >
+      Ver mas servicios
       <Icon name="tabler:arrow-right" class="w-5 h-5" />
     </Link>
   </header>
 
-  <section class="flex flex-col md:gap-y-36 mt-10">
+  <ul class="hidden md:flex flex-col md:gap-y-36 md:mt-20">
     {
       services.map((service, index) => (
         <ServiceCard
           id={service.id}
-          title={service.data.title}
-          description={service.data.description}
+          data={service.data}
           inverted={index % 2 === 1}
         />
       ))
     }
-  </section>
+  </ul>
+
+  <ul class="flex flex-col md:gap-y-36 md:mt-20 md:hidden">
+    {
+      services
+        .slice(0, 2)
+        .map((service, index) => (
+          <ServiceCard
+            id={service.id}
+            data={service.data}
+            inverted={index % 2 === 1}
+          />
+        ))
+    }
+  </ul>
 
   <footer class="w-full mt-10 flex justify-end">
-    <Link href="/services" class="flex items-center w-fit" variant="button">
-      Ver mas
+    <Link href="/services" class="flex items-center w-fit" variant="outline">
+      Ver mas servicios
       <Icon name="tabler:arrow-right" class="w-5 h-5" />
     </Link>
   </footer>

@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+import BackButton from "@/components/ui/BackButton.astro";
+import SectionContainer from "@/components/ui/SectionContainer.astro";
+import ToTopButton from "@/components/ui/ToTopButton.astro";
+import ServiceLayout from "@/layouts/ServiceLayout.astro";
+
+export const getStaticPaths = (async () => {
+  const servicesCollection = await getCollection("services");
+
+  const services = servicesCollection.map((service) => {
+    return {
+      params: {
+        id: service.id,
+      },
+      props: { service },
+    };
+  });
+  return services;
+}) satisfies GetStaticPaths;
+
+const { service } = Astro.props;
+
+const { Content } = await service.render();
+---
+
+<ServiceLayout
+  title={service.data.title}
+  description={service.data.description}
+  ogImageUrl={service.data.imageUrl}
+>
+  <SectionContainer class="pt-28 mx-auto space-y-10" id="service">
+    <BackButton backTo="services" label="Ver más servicios" />
+
+    <Image
+      id="service-image"
+      src={service.data.imageUrl}
+      alt={service.data.title}
+      width={1000}
+      height={500}
+      transition:name={`${service.id}-image`}
+      class="mx-auto w-full h-[300px] object-cover rounded-md"
+    />
+    <div class="content">
+      <Content />
+    </div>
+  </SectionContainer>
+
+  <ToTopButton observerid="service-image" />
+</ServiceLayout>

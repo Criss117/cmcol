@@ -2,10 +2,9 @@
 import Hero from "@/components/sections/Hero.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Services from "@/components/sections/Services.astro";
-import Link from "@/components/ui/Link.astro";
 import Testimonials from "@/components/sections/Testimonials.astro";
-import { Icon } from "astro-icon/components";
 import Contact from "@/components/sections/Contact.astro";
+import ToTopButton from "@/components/ui/ToTopButton.astro";
 ---
 
 <MainLayout title="Home">
@@ -20,36 +19,5 @@ import Contact from "@/components/sections/Contact.astro";
     <Contact id="contact" />
   </div>
 
-  <Link
-    href="#top"
-    class="fixed -bottom-20 right-1/2 translate-x-1/2 transition-all"
-    id="to-top"
-    variant="rounded"
-  >
-    <Icon name="tabler:arrow-up" class="w-8 h-8" />
-  </Link>
+  <ToTopButton observerid="hero" />
 </MainLayout>
-
-<script>
-  import { $ } from "@lib/utils/dom-selectors";
-
-  const btnTop = $("#to-top");
-
-  const options: IntersectionObserverInit = {
-    threshold: 0.2,
-  };
-
-  const observer = new IntersectionObserver((e) => {
-    e.forEach((element) => {
-      if (element.isIntersecting) {
-        btnTop.classList.remove("bottom-5");
-        btnTop.classList.add("-bottom-20");
-      } else {
-        btnTop.classList.add("bottom-5");
-        btnTop.classList.remove("-bottom-20");
-      }
-    });
-  }, options);
-
-  observer.observe($("#hero"));
-</script>

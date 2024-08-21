@@ -6,7 +6,7 @@ import H2 from "../ui/typography/H2.astro";
 import P from "../ui/typography/P.astro";
 ---
 
-<footer class="h-40 mt-20">
+<footer class="h-60 md:h-40 mt-20">
   <div class="border-b"></div>
   <div
     class="mx-20 mt-10 flex justify-between items-baseline flex-col gap-y-5 md:flex-row"
@@ -19,7 +19,7 @@ import P from "../ui/typography/P.astro";
       {
         SOCIALS.map((social) => (
           <li>
-            <Link href={social.link} target="_blank">
+            <Link href={social.link} target="_blank" ariaLabel={social.title}>
               <Icon name={social.icon} class="w-8 h-8" />
             </Link>
           </li>

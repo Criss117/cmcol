@@ -1,0 +1,16 @@
+---
+import { buttonVariants } from "@/lib/utils/button-variants";
+
+interface Props {
+  backTo?: "home" | "services";
+  label?: string;
+}
+
+const { backTo = "home", label = "Volver" } = Astro.props;
+
+const backToPath = backTo === "home" ? "/" : "/services";
+---
+
+<a href={backToPath} class={buttonVariants()}>
+  {label}
+</a>
