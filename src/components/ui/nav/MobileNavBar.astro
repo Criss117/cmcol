@@ -1,11 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import Button from "../Button.astro";
-import lightCmcol from "@/assets/images/light-cmcol.png";
-import darkCmcol from "@/assets/images/dark-cmcol.png";
 import { Icon } from "astro-icon/components";
 import { NAV } from "@/lib/consts/nav";
-import ApplyColorMode from "../ApplyColorMode.astro";
 
 const pathname = new URL(Astro.request.url).pathname;
 ---
@@ -14,14 +11,14 @@ const pathname = new URL(Astro.request.url).pathname;
   <div>
     <a href={pathname === "/" ? "/#top" : "/"} class="bg-red-500">
       <Image
-        src={lightCmcol}
+        src={"/light-cmcol.png"}
         alt="CmCol Logo"
         width={40}
         height={40}
         class="dark:block hidden"
       />
       <Image
-        src={darkCmcol}
+        src={"/dark-cmcol.png"}
         alt="CmCol Logo"
         width={40}
         height={40}
