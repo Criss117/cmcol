@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import P from "../typography/P.astro";
+import H2 from "../typography/H2.astro";
+import Link from "../Link.astro";
+
+interface Props {
+  service: CollectionEntry<"services">;
+  isBig?: boolean;
+}
+
+const { service } = Astro.props;
+---
+
+<div class="">
+  <Image
+    src={service.data.imageUrl}
+    alt={service.data.title}
+    width={500}
+    height={500}
+    class:list={["rounded-md object-cover mx-auto aspect-video w-full"]}
+    transition:name={`${service.id}-image`}
+  />
+  <div class="mt-10">
+    <Link
+      class="space-y-2"
+      href={`/services/${service.id}`}
+      ariaLabel={service.data.title}
+    >
+      <H2>{service.data.title}</H2>
+      <P>{service.data.description}</P>
+    </Link>
+  </div>
+</div>

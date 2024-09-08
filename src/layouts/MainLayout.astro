@@ -1,5 +1,4 @@
 ---
-import Background from "@components/ui/Background.astro";
 import { METADATA } from "@lib/consts/metadata";
 import { setTitle } from "@lib/utils/metadata.utils";
 import MainHeader from "@/components/ui/MainHeader.astro";
@@ -47,7 +46,6 @@ const { title, description, ogImageUrl } = Astro.props;
     <title>{setTitle(title)}</title>
   </head>
   <body>
-    <Background />
     <main class="bg-lightBg100 dark:bg-darkBg100 min-h-screen">
       <MainHeader />
       <slot />

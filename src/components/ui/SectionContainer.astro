@@ -1,12 +1,18 @@
 ---
+const variants = {
+  default: "lg:w-[70%] xl:w-[60%]",
+  small: "lg:w-[60%] xl:w-[50%]",
+};
+
 interface Props {
   id?: string;
   class?: string;
+  variant?: keyof typeof variants;
 }
 
-const { class: className, id } = Astro.props;
+const { class: className, id, variant = "default" } = Astro.props;
 ---
 
-<section id={id} class={`mx-auto w-[90%] lg:w-[70%] xl:w-[60%]  ${className}`}>
+<section id={id} class:list={["mx-auto w-[90%]", variants[variant], className]}>
   <slot />
 </section>
