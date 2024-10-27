@@ -12,7 +12,10 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<SectionContainer id={id} class="min-h-screen flex items-center">
+<SectionContainer
+  id={id}
+  class="min-h-screen flex flex-col items-center justify-center"
+>
   <div class="space-y-16">
     <header>
       <H1>
@@ -21,15 +24,15 @@ const { id } = Astro.props;
           y asesoría tributaria
         </span>
       </H1>
-      <P class="text-center mt-10" variant="xlarge">
+      <P class="text-center mt-10 text-white" variant="xlarge">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet dolorem
         harum quisquam. Eaque est accusantium autem porro quod sed debitis?
       </P>
     </header>
-    <footer
+    <div
       class="flex gap-5 flex-col md:flex-row flex-grow flex-nowrap items-center md:items-end justify-center"
     >
       {SOCIALPILLS.map((socialPill) => <SocialPill socialPill={socialPill} />)}
-    </footer>
+    </div>
   </div>
 </SectionContainer>

@@ -1,9 +1,9 @@
 ---
 import Submit from "../form/Submit.astro";
 import Input from "../form/Input.astro";
-import TextArea from "../form/TextArea.astro";
-import SectionContainer from "../ui/SectionContainer.astro";
 import H2 from "../ui/typography/H2.astro";
+import { SOCIALPILLS } from "@lib/consts/socialpills";
+import SimpleSocialPill from "../ui/SimpleSocialPill.astro";
 
 interface Props {
   id: string;
@@ -12,9 +12,17 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<SectionContainer id={id} class="py-28">
-  <H2 class="text-center">Contacto</H2>
-  <form id="contact-form" class="relative w-[90%] md:w-[60%] mx-auto">
+<div
+  id={id}
+  class="flex flex-col md:flex-row justify-center items-center bg-lightPrimary100 gap-x-10 py-10 md:py-20 px-5"
+>
+  <div class="h-full space-y-5 pb-6 md:pb-0">
+    <H2 class="text-center text-white my-auto">Contactanos</H2>
+    <div class="space-y-2">
+      {SOCIALPILLS.map((pill) => <SimpleSocialPill socialPill={pill} />)}
+    </div>
+  </div>
+  <form id="contact-form" class="w-full md:w-fit">
     <p
       class="bg-red-400 text-white p-2
         border-l-8 border-red-800 absolute
@@ -23,7 +31,7 @@ const { id } = Astro.props;
     >
       Error
     </p>
-    <fieldset class="mt-16">
+    <fieldset class="flex gap-y-5 gap-x-10 flex-col md:flex-row">
       <Input
         type="text"
         name="name"
@@ -31,8 +39,6 @@ const { id } = Astro.props;
         placeholder="Nombre Completo"
         maxlength={50}
       />
-    </fieldset>
-    <fieldset class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
       <Input
         type="email"
         name="email"
@@ -48,9 +54,6 @@ const { id } = Astro.props;
         maxlength={10}
       />
     </fieldset>
-    <fieldset class="mt-5">
-      <TextArea name="comment" id="comment" placeholder="Mensaje" />
-    </fieldset>
     <Submit label="Enviar" />
   </form>
-</SectionContainer>
+</div>

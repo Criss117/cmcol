@@ -9,14 +9,14 @@ const pathname = new URL(Astro.request.url).pathname;
     src={"/light-cmcol.png"}
     alt="CmCol Logo"
     width={40}
-    height={40}
-    class="dark:block hidden"
+    height={55}
+    class="dark:block hidden aspect-[0.72]"
   />
   <Image
     src={"/dark-cmcol.png"}
     alt="CmCol Logo"
     width={40}
-    height={40}
-    class="dark:hidden"
+    height={55}
+    class="dark:hidden aspect-[0.72]"
   />
 </a>

@@ -1,7 +1,7 @@
 ---
 const variants = {
   primary: "dark:bg-black bg-lightPrimary100",
-  secondary: " bg-lightPrimary100 text-white",
+  secondary: " bg-lightPrimary100 text-white dark:bg-darkPrimary200",
   outline: "bg-transparent text-black border",
   ghost: "bg-transparent text-sky-700 underline",
 } as const;
@@ -12,17 +12,26 @@ interface Props {
   type?: "submit" | "reset" | "button";
   className?: string;
   onclick?: string | null | undefined;
+  ariaLabel?: string;
 }
 
-const { id, type, className, variant = "primary", onclick } = Astro.props;
+const {
+  id,
+  type,
+  className,
+  variant = "primary",
+  onclick,
+  ariaLabel,
+} = Astro.props;
 ---
 
 <button
   onclick={onclick}
   id={id}
   type={type || "button"}
+  aria-label={ariaLabel}
   class:list={[
-    "text-white font-bold rounded-md hover:opacity-80 transition px-4 py-2",
+    "text-white font-bold rounded-md hover:opacity-80 transition px-4 py-2 ",
     variants[variant],
     className,
   ]}

@@ -7,7 +7,7 @@ import NavBar from "./NavBar.astro";
 
 <nav class="md:hidden flex justify-between items-center w-[95%] mx-auto py-2">
   <LinkLogo />
-  <Button variant="secondary" id="mobile-nav-btn">
+  <Button variant="secondary" id="mobile-nav-btn" ariaLabel="burger-menu">
     <Icon name="tabler:menu-3" class="w-6 h-6" />
   </Button>
 </nav>
@@ -29,6 +29,7 @@ import NavBar from "./NavBar.astro";
       class="hover:bg-lightAccent200/90 p-3 rounded-full
       border-2 border-transparent hover:border-2
       hover:border-lightPrimary100 transition-all hover:text-white"
+      aria-label="modo oscuro / claro"
     >
       <Icon name="tabler:sun" class:list={["w-10 h-10 text-white"]} />
     </button>

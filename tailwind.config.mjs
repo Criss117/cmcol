@@ -3,6 +3,9 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "hero-pattern": "url('/hero-pattern.jpg')",
+      },
       colors: {
         lightPrimary100: "#223d6d",
         lightPrimary200: "#757de8",

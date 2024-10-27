@@ -1,0 +1,24 @@
+---
+import type { SocialPill } from "@/lib/models/type";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  socialPill: SocialPill;
+}
+
+const { socialPill } = Astro.props;
+
+const { id, title, link, icon, toClipboard } = socialPill;
+---
+
+<div>
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center justify-center gap-x-2 group"
+  >
+    <Icon class="text-white size-7 group-hover:scale-110" name={icon} />
+    <p class="text-white font-semibold text-center">{title}</p>
+  </a>
+</div>

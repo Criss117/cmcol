@@ -33,7 +33,11 @@ const { id, title, link, icon, toClipboard } = socialPill;
     >
       Copiar al portapapeles
     </div>
-    <button class="hover:bg-slate-500 p-2 rounded-full transition-all" id={id}>
+    <button
+      class="hover:bg-slate-500 p-2 rounded-full transition-all"
+      id={id}
+      aria-label="Copiar"
+    >
       <Icon name="tabler:copy" class="mx-auto size-7 text-white" />
     </button>
   </div>

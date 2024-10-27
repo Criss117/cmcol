@@ -3,21 +3,26 @@ import Hero from "@/components/sections/Hero.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Services from "@/components/sections/Services.astro";
 import Testimonials from "@/components/sections/Testimonials.astro";
-import Contact from "@/components/sections/Contact.astro";
 import ToTopButton from "@/components/ui/ToTopButton.astro";
+import Contact from "@/components/sections/Contact.astro";
 ---
 
 <MainLayout title="Home">
-  <Hero id="hero" />
-  <div class="bg-indigo-50/80 dark:bg-slate-800 py-20">
-    <Services id="services" />
-  </div>
-
-  <Testimonials id="testimonials" />
-
-  <div class="bg-indigo-50/80 dark:bg-slate-800">
+  <div class="bg-hero-pattern bg-no-repeat bg-fixed bg-cover">
+    <Hero id="hero" />
     <Contact id="contact" />
-  </div>
+    <div class="bg-indigo-50 dark:bg-slate-800 py-20">
+      <Services id="services" />
+    </div>
 
-  <ToTopButton observerid="hero" />
+    <div class="w-full bg-lightBg100 dark:bg-darkBg100">
+      <Testimonials id="testimonials" />
+    </div>
+
+    <!-- <div class="bg-indigo-50/80 dark:bg-slate-800">
+    <Contact id="contact" />
+    </div> -->
+
+    <ToTopButton observerid="hero" />
+  </div>
 </MainLayout>
