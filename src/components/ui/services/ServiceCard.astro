@@ -31,24 +31,6 @@ const imageUrl =
       <H3>{title}</H3>
       <P>{description}</P>
     </Link>
-
-    <ul class="mt-5 space-y-5">
-      {
-        features.map(({ title, description }) => (
-          <li class="flex items-start gap-x-5">
-            <span class="bg-green-400 rounded-full flex items-center justify-center p-2">
-              <Icon name="tabler:check" class="w-7 h-7" />
-            </span>
-            <div>
-              <H3>{title}</H3>
-              <P class="flex gap-x-5 justify-center items-center">
-                {description}
-              </P>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
   </div>
   <div class="md:w-1/2 mt-10 md:mt-0">
     <Image

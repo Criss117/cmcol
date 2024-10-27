@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Link from "./Link.astro";
+import H3 from "./typography/H3.astro";
+import P from "./typography/P.astro";
+
+interface Props {
+  id: string;
+  service: CollectionEntry<"services">;
+  gridClass: string;
+  width: number;
+  height: number;
+  imageClass: string;
+}
+
+const { gridClass, width, height, imageClass, service, id } = Astro.props;
+---
+
+<li class:list={["group relative overflow-hidden", gridClass]}>
+  <Link
+    href={`/services/${service.id}`}
+    ariaLabel={service.data.title}
+    class="w-full h-full"
+  >
+    <Image
+      src={service.data.imageUrl}
+      alt={service.data.title}
+      width={width}
+      height={height}
+      transition:name={`${id}-image`}
+      class:list={[
+        "object-cover",
+        "transition-transform duration-300 ease-in-out group-hover:scale-110",
+        "transition-colors group-hover:blur-sm",
+        imageClass,
+      ]}
+    />
+    <div
+      class:list={[
+        "absolute -bottom-32 group-hover:bottom-0 transition-all",
+        "left-1/2 -translate-x-1/2 duration-300 ease-in-out bg-lightBg100/70 dark:bg-darkBg300 w-full px-2 h-32",
+        "flex items-center justify-center",
+      ]}
+    >
+      <H3>{service.data.title}</H3>
+    </div>
+  </Link>
+</li>

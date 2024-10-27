@@ -1,10 +1,10 @@
 ---
 import Hero from "@/components/sections/Hero.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-import Services from "@/components/sections/Services.astro";
 import Testimonials from "@/components/sections/Testimonials.astro";
 import ToTopButton from "@/components/ui/ToTopButton.astro";
 import Contact from "@/components/sections/Contact.astro";
+import BentoServices from "@/components/sections/BentoServices.astro";
 ---
 
 <MainLayout title="Home">
@@ -12,16 +12,12 @@ import Contact from "@/components/sections/Contact.astro";
     <Hero id="hero" />
     <Contact id="contact" />
     <div class="bg-indigo-50 dark:bg-slate-800 py-20">
-      <Services id="services" />
+      <BentoServices id="services" />
     </div>
 
     <div class="w-full bg-lightBg100 dark:bg-darkBg100">
       <Testimonials id="testimonials" />
     </div>
-
-    <!-- <div class="bg-indigo-50/80 dark:bg-slate-800">
-    <Contact id="contact" />
-    </div> -->
 
     <ToTopButton observerid="hero" />
   </div>
