@@ -1,9 +1,11 @@
+export type Theme = "light" | "dark";
+
 /**
  * Obtains theme from local storage
  * @returns string
  */
 export function getTheme() {
-  const theme = localStorage.getItem("theme");
+  const theme: Theme = localStorage.getItem("theme") as Theme;
 
   return theme;
 }
@@ -13,7 +15,7 @@ export function getTheme() {
  * @param theme
  * @returns string
  */
-export function setTheme(theme: string) {
+export function setTheme(theme: Theme) {
   localStorage.setItem("theme", theme);
   return theme;
 }

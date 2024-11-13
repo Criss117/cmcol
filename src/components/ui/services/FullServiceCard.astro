@@ -8,23 +8,29 @@ import Link from "../Link.astro";
 interface Props {
   service: CollectionEntry<"services">;
   isBig?: boolean;
+  reverse?: boolean;
 }
 
-const { service } = Astro.props;
+const { service, isBig, reverse } = Astro.props;
 ---
 
-<div class="">
+<li
+  class:list={[
+    "flex gap-x-10 border-b-8 pb-10 border-lightBg300 dark:border-lightText100",
+    reverse && "md:flex-row-reverse",
+  ]}
+>
   <Image
     src={service.data.imageUrl}
     alt={service.data.title}
     width={500}
     height={500}
-    class:list={["rounded-md object-cover mx-auto aspect-video w-full"]}
+    class:list={["rounded-md object-cover mx-auto aspect-video w-1/2"]}
     transition:name={`${service.id}-image`}
   />
-  <div class="mt-10">
+  <div class="mt-10 w-1/2">
     <Link
-      class="space-y-2"
+      class="space-y-5"
       href={`/services/${service.id}`}
       ariaLabel={service.data.title}
     >
@@ -32,4 +38,4 @@ const { service } = Astro.props;
       <P>{service.data.description}</P>
     </Link>
   </div>
-</div>
+</li>

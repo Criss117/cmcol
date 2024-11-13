@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Link from "./Link.astro";
 import H3 from "./typography/H3.astro";
-import P from "./typography/P.astro";
 
 interface Props {
   id: string;
@@ -21,7 +20,7 @@ const { gridClass, width, height, imageClass, service, id } = Astro.props;
   <Link
     href={`/services/${service.id}`}
     ariaLabel={service.data.title}
-    class="w-full h-full"
+    class:list={["w-full h-full"]}
   >
     <Image
       src={service.data.imageUrl}

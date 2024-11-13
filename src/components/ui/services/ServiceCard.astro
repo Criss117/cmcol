@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import P from "../typography/P.astro";
 import H3 from "../typography/H3.astro";
@@ -26,20 +25,20 @@ const imageUrl =
     inverted ? "md:flex-row" : "md:flex-row-reverse",
   ]}
 >
-  <div class="mt-14 md:mt-0 md:w-1/2">
-    <Link class="space-y-2" href={`/services/${id}`}>
+  <Link class="space-y-2" href={`/services/${id}`}>
+    <div class="mt-14 md:mt-0 md:w-1/2">
       <H3>{title}</H3>
       <P>{description}</P>
-    </Link>
-  </div>
-  <div class="md:w-1/2 mt-10 md:mt-0">
-    <Image
-      src={imageUrl}
-      alt={title}
-      width={700}
-      height={700}
-      class="object-cover aspect-square rounded-xl"
-      transition:name={`${id}-image`}
-    />
-  </div>
+    </div>
+    <div class="md:w-1/2 mt-10 md:mt-0">
+      <Image
+        src={imageUrl}
+        alt={title}
+        width={700}
+        height={700}
+        class="object-cover aspect-square rounded-xl"
+        transition:name={`${id}-image`}
+      />
+    </div>
+  </Link>
 </li>

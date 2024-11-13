@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import SectionContainer from "../ui/SectionContainer.astro";
+import H2 from "../ui/typography/H2.astro";
+import P from "../ui/typography/P.astro";
+---
+
+<SectionContainer id="about" bgVariant="secodary" class="flex gap-x-2">
+  <div class="w-1/2">
+    <H2>
+      Consultoría
+      <span class="text-2xl font-normal block lowercase">
+        y asesoría tributaria
+      </span>
+    </H2>
+    <div class="space-y-5 mt-5">
+      <P>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores hic
+        earum deleniti excepturi, odit magnam voluptatum? Laborum explicabo
+        perspiciatis illum quam sapiente cumque repudiandae excepturi, ullam
+        nobis asperiores eos nihil nulla! Doloremque quibusdam perspiciatis
+        totam magni ut illo explicabo? Reiciendis at explicabo repudiandae
+        recusandae optio sint iure quia ducimus commodi!
+      </P>
+      <P>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores hic
+        earum deleniti excepturi, odit magnam voluptatum? Laborum explicabo
+        perspiciatis illum quam sapiente cumque repudiandae excepturi, ullam
+        nobis asperiores eos nihil nulla! Doloremque quibusdam perspiciatis
+        totam magni ut illo explicabo? Reiciendis at explicabo repudiandae
+        recusandae optio sint iure quia ducimus commodi!
+      </P>
+      <P>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores hic
+        earum deleniti excepturi, odit magnam voluptatum? Laborum explicabo
+        perspiciatis illum quam sapiente cumque repudiandae excepturi, ullam
+        nobis asperiores eos nihil nulla! Doloremque quibusdam perspiciatis
+        totam magni ut illo explicabo? Reiciendis at explicabo repudiandae
+        recusandae optio sint iure quia ducimus commodi!
+      </P>
+    </div>
+  </div>
+  <div class="w-1/2">
+    <Image
+      src="https://images.pexels.com/photos/7876708/pexels-photo-7876708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      alt="About image"
+      width={700}
+      height={700}
+      class="w-full object-cover"
+    />
+  </div>
+</SectionContainer>

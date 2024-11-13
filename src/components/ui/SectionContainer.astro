@@ -4,15 +4,29 @@ const variants = {
   small: "lg:w-[60%] xl:w-[50%]",
 };
 
+const bgVariants = {
+  transparent: "bg-transparent",
+  default: "bg-indigo-50 dark:bg-slate-800 py-36",
+  secodary: "w-full bg-lightBg100 dark:bg-darkBg100 py-36",
+};
+
 interface Props {
   id?: string;
   class?: string;
   variant?: keyof typeof variants;
+  bgVariant?: keyof typeof bgVariants;
 }
 
-const { class: className, id, variant = "default" } = Astro.props;
+const {
+  class: className,
+  id,
+  variant = "default",
+  bgVariant = "default",
+} = Astro.props;
 ---
 
-<section id={id} class:list={["mx-auto w-[90%]", variants[variant], className]}>
-  <slot />
+<section id={id} class:list={[bgVariants[bgVariant]]}>
+  <div class:list={["mx-auto w-[90%]", variants[variant], className]}>
+    <slot />
+  </div>
 </section>

@@ -10,7 +10,16 @@ import { Icon } from "astro-icon/components";
     hover:border-lightPrimary100 transition-all hover:text-white"
   aria-label="modo oscuro / claro"
 >
-  <Icon name="tabler:sun" class:list={["w-5", "h-5", "dark:text-white"]} />
+  <Icon
+    id="sun"
+    name="tabler:sun"
+    class:list={["w-5", "h-5", "dark:text-white"]}
+  />
+  <Icon
+    id="moon"
+    name="tabler:moon-filled"
+    class:list={["w-5", "h-5", "dark:text-white hidden"]}
+  />
 </button>
 
 <script>
@@ -19,10 +28,15 @@ import { Icon } from "astro-icon/components";
 
   const colorModeToggle = $("#color-mode-toggle");
   const html = $("html");
+  const sunIcon = $("#sun");
+  const moonIcon = $("#moon");
 
   colorModeToggle.addEventListener("click", () => {
     setTheme(html.classList.contains("dark") ? "light" : "dark");
     html.classList.toggle("dark");
+
+    sunIcon.classList.toggle("hidden");
+    moonIcon.classList.toggle("hidden");
   });
 </script>
 
@@ -32,10 +46,23 @@ import { Icon } from "astro-icon/components";
 
   const html = $("html");
 
+  const sunIcon = $("#sun");
+  const moonIcon = $("#moon");
+
   document.addEventListener("DOMContentLoaded", () => {
     const theme = getTheme();
 
     if (!theme) return;
+
+    if (theme === "dark") {
+      moonIcon.classList.remove("hidden");
+      sunIcon.classList.add("hidden");
+    }
+
+    if (theme === "light") {
+      moonIcon.classList.add("hidden");
+      sunIcon.classList.remove("hidden");
+    }
 
     html.classList.add(theme);
   });

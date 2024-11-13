@@ -1,11 +1,60 @@
 ---
 import DeskTopNavBar from "./nav/DeskTopNavBar.astro";
 import MobileNavBar from "./nav/MobileNavBar.astro";
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <header
-  class="bg-lightBg200/90 dark:bg-darkBg200/90 w-full md:h-20 fixed top-0 z-50 backdrop-blur-lg shadow-sm"
+  id="main-header"
+  class:list={[
+    "transparent-header w-full md:h-20 fixed top-0 z-50 transition-colors text-white",
+    {
+      "default-header": pathname !== "/",
+      "header-text": pathname !== "/",
+    },
+  ]}
 >
   <DeskTopNavBar />
   <MobileNavBar />
 </header>
+
+<script>
+  import { $ } from "@lib/utils/dom-selectors";
+
+  const options: IntersectionObserverInit = {
+    threshold: 0.2,
+  };
+
+  const mainHeader = $<HTMLHeadElement>("#main-header");
+
+  const observer = new IntersectionObserver((e) => {
+    e.forEach((element) => {
+      if (element.isIntersecting) {
+        mainHeader.classList.remove("default-header");
+        mainHeader.classList.add("transparent-header");
+        mainHeader.classList.remove("header-text");
+      } else {
+        mainHeader.classList.remove("transparent-header");
+        mainHeader.classList.add("default-header");
+        mainHeader.classList.add("header-text");
+      }
+    });
+  }, options);
+
+  observer.observe($("#hero"));
+</script>
+
+<style>
+  .transparent-header {
+    @apply backdrop-blur-[2px];
+  }
+
+  .default-header {
+    @apply bg-lightBg200/90 dark:bg-darkBg200/90 backdrop-blur-lg;
+  }
+
+  .header-text {
+    @apply text-lightText100;
+  }
+</style>

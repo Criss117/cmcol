@@ -5,20 +5,16 @@ import Testimonials from "@/components/sections/Testimonials.astro";
 import ToTopButton from "@/components/ui/ToTopButton.astro";
 import Contact from "@/components/sections/Contact.astro";
 import BentoServices from "@/components/sections/BentoServices.astro";
+import About from "@/components/sections/About.astro";
 ---
 
-<MainLayout title="Home">
+<MainLayout title="Consultoría y asesoría tributaria">
   <div class="bg-hero-pattern bg-no-repeat bg-fixed bg-cover">
     <Hero id="hero" />
     <Contact id="contact" />
-    <div class="bg-indigo-50 dark:bg-slate-800 py-20">
-      <BentoServices id="services" />
-    </div>
-
-    <div class="w-full bg-lightBg100 dark:bg-darkBg100">
-      <Testimonials id="testimonials" />
-    </div>
-
+    <BentoServices id="services" />
+    <About id="about" />
+    <Testimonials id="testimonials" />
     <ToTopButton observerid="hero" />
   </div>
 </MainLayout>
